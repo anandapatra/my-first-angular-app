@@ -1,21 +1,69 @@
-<div>
-  <h1>
-    Student Detail 
-  </h1> 
-   <ul>
-     <li>
-        {{name}}
-     </li>
-     <li>
-        {{email}}
-     </li>
-     <li>
-        {{phonenumber}}
-     </li>   
-   </ul>
+<div>  
    <div>
-       <label>Name</label> <input type="text" [(ngModel)]="name">
-        <p>The Name Typed is {{name}}</p>
+      <h1>
+        Student Detail 
+      </h1> 
+      <ul>
+        <li>
+            {{name}}
+        </li>
+        <li>
+            {{email}}
+        </li>
+        <li>
+            {{phonenumber}}
+        </li>   
+      </ul>
+       <label>Name: </label> <input type="text" [(ngModel)]="name">
+       <label>Email: </label> <input type="text" [(ngModel)]="email">
+       <label>Phone: </label> <input type="text" [(ngModel)]="phonenumber">
+  </div>
+   <hr>
+   <br><br>
+   <hr>
+   <h1> Handling Forms Using Angular </h1>
+   <form #myForm="ngForm" (ngSubmit)="saveData(myForm)">
+       <label>Name: </label> <input type="text" name="firstName" [(ngModel)]="firstName">
+       <label>Email: </label> <input type="text" name="emailId" [(ngModel)]="emailId">
+       <label>Phone: </label> <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber">
+       <button type="submit">Submit</button>
+  </form>   
+  <div>
+      
+      <table>
+         
+            <tr>
+              <td>
+               <strong> Name </strong>
+              </td>
+              <td>
+                <strong>Email</strong>
+              </td>
+              <td>
+                <strong>Phone Number</strong>
+                </td>
+                 <td>
+               <strong> Action </strong>
+                </td>
+            </tr>       
+        
+            <tr *ngFor="let entry of entries; let i = index">
+                <td>
+                  {{entry.firstname}}
+                </td>
+                <td>
+                  {{entry.emailId}}
+                </td>
+                <td>
+                  {{entry.phoneNumber}}
+                </td>
+                <td>
+                   <input type="button" value="Delete" (click)="deleteEntry(i)">
+                </td>
+            </tr>
+        
+      </table>
+      
   </div>
   <hr>
 </div>
