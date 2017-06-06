@@ -10,7 +10,7 @@ export class TodoComponent {
     name : string;
     email : string;
     phonenumber : string;  
-    student: Student;
+    student: Student; 
     entries : Student[];
    
     constructor() {
@@ -39,8 +39,8 @@ export class TodoComponent {
     }    
 
     deleteEntry(i: number) {
-         this.entries.splice(i);
-
+         console.log("index of the row is  ", i);
+         this.entries.splice(i, 1);
     }
 }
 
