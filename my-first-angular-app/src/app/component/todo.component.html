@@ -23,10 +23,18 @@
    <hr>
    <h1> Handling Forms Using Angular </h1>
    <form #myForm="ngForm" (ngSubmit)="saveData(myForm)">
-       <label>Name: </label> <input type="text" name="firstName" [(ngModel)]="firstName">
-       <label>Email: </label> <input type="text" name="emailId" [(ngModel)]="emailId">
-       <label>Phone: </label> <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber">
-       <button type="submit">Submit</button>
+       <table>
+        <tr>
+       <td><label>Name: </label> </td> <td><input type="text" name="firstName" [(ngModel)]="firstName"></td></tr> 
+       <tr> <td><label>Email: </label></td> <td> <input type="text" name="emailId" [(ngModel)]="emailId"></td></tr> 
+       <tr> <td><label>Phone: </label></td><td><input type="text" name="phoneNumber" [(ngModel)]="phoneNumber"></td></tr> 
+       <tr> <td><label>Street Address 1: </label></td> <td><input type="text" name="streetAddress1" [(ngModel)]="streetAddress1"></td></tr> 
+       <tr> <td><label>Street Address 2: </label></td> <td><input type="text" name="streetAddress2" [(ngModel)]="streetAddress2"></td></tr> 
+       <tr> <td><label>City: </label></td> <td><input type="text" name="city" [(ngModel)]="city"></td></tr> 
+       <tr> <td><label>County: </label></td> <td><input type="text" name="county" [(ngModel)]="county"></td></tr> 
+       <tr> <td><label>State: </label></td> <td><input type="text" name="state" [(ngModel)]="state"></td></tr> 
+       <tr> <td><button type="submit">Submit</button></td></tr>
+      </table>
   </form> 
   <br>  
   <br>
@@ -45,6 +53,18 @@
                 <strong>Phone Number</strong>
                 </td>
                  <td>
+                <strong>Street Address</strong>
+                </td>
+                 <td>
+                <strong>City</strong>
+                </td>
+                 <td>
+                <strong>County</strong>
+                </td>
+                 <td>
+                <strong>State</strong>
+                </td>
+                 <td>
                <strong> Action </strong>
                 </td>
             </tr>       
@@ -60,12 +80,29 @@
                   {{entry.phoneNumber}}
                 </td>
                 <td>
+                  {{entry.address.streetAddress1}} {{entry.address.streetAddress2}}
+                </td>
+                <td>
+                  {{entry.address.city}} 
+                </td>
+                <td>
+                  {{entry.address.county}} 
+                </td>
+                <td>
+                  {{entry.address.state}} 
+                </td>
+                <td>
                    <input type="button" value="Delete" (click)="deleteEntry(i)">
                 </td>
             </tr>
         
       </table>
       
-  </div>
+  </div>  
   <hr>
+  <div>
+     <input type="button" value="Post Data" (click)="postData()"> <br>
+     <span>Title: {{title}}</span> <br>
+     <span>Body: {{body}}</span>
+  </div>
 </div>

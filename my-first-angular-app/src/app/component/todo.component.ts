@@ -1,36 +1,72 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {ToDoService} from '../service/todo.service';
 
 @Component({
   selector: 'app-todo',
-  templateUrl: './todo.component.html'  
+  templateUrl: './todo.component.html', 
+  providers: [ToDoService]
+
 })
 export class TodoComponent {
 
     name : string;
     email : string;
     phonenumber : string;  
-    student: Student; 
+    student: Student;
+    title: string;
+    body: string;
+    address:Address;
     entries : Student[];
+    toDoService;
    
-    constructor() {
+    constructor(private todoService : ToDoService ) {
         console.log('Student Component Intialized..')
         this.name = 'Ananda Patra';
         this.email = 'patra.ananda@gmail.com';
         this.phonenumber = '+1-721-666-7238';
-        this.student = {
-            firstname: '',
-            emailId:'',
-            phoneNumber:''
-        }  
-        this.entries =[];        
+        this.toDoService = todoService;
+        this.entries =[]; 
+
+        todoService.getPosts().subscribe( posts => {
+            console.log(posts);
+        });
+                  
     } 
+  
+    postData() {
+        console.log("Posting Data to Server");
+        this.todoService.doPost(); 
+        console.log("Data is posted");      
+                
+                // this.body = results.body;
+                // this.title = results.title;
+        
+    }
 
     saveData(form : NgForm) {
         console.log('Calling Save Data' , form.value);
+        this.student = {
+            firstname: '',
+            emailId:'',
+            phoneNumber:'',
+            address: {
+                streetAddress1: '',
+                streetAddress2: '',
+                city: '',
+                county: '',
+                state:'',
+            }
+        }  
         this.student.firstname = form.value.firstName;
         this.student.emailId = form.value.emailId;
         this.student.phoneNumber = form.value.phoneNumber;
+        this.student.address.streetAddress1 = form.value.streetAddress1;
+        this.student.address.streetAddress2 = form.value.streetAddress2;
+        this.student.address.city = form.value.city;
+        this.student.address.county = form.value.county;
+        this.student.address.state = form.value.state;
+
 
         this.entries.push(this.student);
 
@@ -39,8 +75,9 @@ export class TodoComponent {
     }    
 
     deleteEntry(i: number) {
-         console.log("index of the row is  ", i);
-         this.entries.splice(i, 1);
+         console.log("index of the row is  ",i)
+         this.entries.splice(i,1);
+
     }
 }
 
@@ -48,5 +85,14 @@ export interface Student {
     firstname : string;
     emailId : string;
     phoneNumber : string;
+    address : Address;
+}
+
+export interface Address {
+    streetAddress1:string
+    streetAddress2:string;
+    city: string;
+    county: string;
+    state:string;
 }
 
