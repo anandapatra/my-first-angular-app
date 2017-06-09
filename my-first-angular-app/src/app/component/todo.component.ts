@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {ToDoService} from '../service/todo.service';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-todo',
@@ -8,6 +9,7 @@ import {ToDoService} from '../service/todo.service';
   providers: [ToDoService]
 
 })
+@Injectable()
 export class TodoComponent {
 
     name : string;
@@ -19,6 +21,7 @@ export class TodoComponent {
     address:Address;
     entries : Student[];
     toDoService;
+    message : string = '';
    
     constructor(private todoService : ToDoService ) {
         console.log('Student Component Intialized..')
@@ -41,6 +44,8 @@ export class TodoComponent {
                 
                 // this.body = results.body;
                 // this.title = results.title;
+
+        this.message ="Data Successfully Added!";
         
     }
 
@@ -71,8 +76,24 @@ export class TodoComponent {
         this.entries.push(this.student);
 
         console.log(this.entries);
+
+         this.message ="Data Successfully Added!";
+
+         this.reset (form);
         
-    }    
+    }  
+
+    reset (form: NgForm) {
+        console.log("resetting the data");
+        // form.value.emailId = '';
+        // form.value.firstName = '';
+        // form.value.phoneNumber ='';
+        // form.value.streetAddress1 ='';
+        // form.value.streetAddress2 ='';
+        // form.value.city ='';
+        // form.value.county ='';
+        // form.value.state = '';
+    }  
 
     deleteEntry(i: number) {
          console.log("index of the row is  ",i)

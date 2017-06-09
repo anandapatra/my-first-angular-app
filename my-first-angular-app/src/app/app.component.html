@@ -1,8 +1,10 @@
 <!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}
-  </h1> 
+<div class="container">
+  <app-header></app-header>
+  <app-navigation></app-navigation>
+  <hr>
+  <router-outlet></router-outlet>   
   <hr> 
+  <app-footer></app-footer>
 </div>
-<app-todo></app-todo>
+

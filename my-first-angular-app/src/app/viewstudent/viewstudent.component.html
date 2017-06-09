@@ -1,0 +1,61 @@
+ <div>
+      <h1>View Student Information</h1>
+      <table class="table">
+         
+            <tr>
+              <td>
+               <strong> Name </strong>
+              </td>
+              <td>
+                <strong>Email</strong>
+              </td>
+              <td>
+                <strong>Phone Number</strong>
+                </td>
+                 <td>
+                <strong>Street Address</strong>
+                </td>
+                 <td>
+                <strong>City</strong>
+                </td>
+                 <td>
+                <strong>County</strong>
+                </td>
+                 <td>
+                <strong>State</strong>
+                </td>
+                 <td>
+               <strong> Action </strong>
+                </td>
+            </tr>       
+        
+            <tr *ngFor="let entry of entries; let i = index">
+                <td>
+                  {{entry.firstname}}
+                </td>
+                <td>
+                  {{entry.emailId}}
+                </td>
+                <td>
+                  {{entry.phoneNumber}}
+                </td>
+                <td>
+                  {{entry.address.streetAddress1}} {{entry.address.streetAddress2}}
+                </td>
+                <td>
+                  {{entry.address.city}} 
+                </td>
+                <td>
+                  {{entry.address.county}} 
+                </td>
+                <td>
+                  {{entry.address.state}} 
+                </td>
+                <td>
+                   <input type="button" class="btn btn-danger" value="Delete" (click)="deleteEntry(i)">
+                </td>
+            </tr>
+        
+      </table>
+      
+  </div>  

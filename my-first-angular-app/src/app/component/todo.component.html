@@ -1,4 +1,5 @@
-<div>  
+<div>
+  <!--  
    <div>
       <h1>
         Student Detail 
@@ -21,9 +22,10 @@
    <hr>
    <br><br>
    <hr>
-   <h1> Handling Forms Using Angular </h1>
+   -->
+   <h1> Add Student Data &nbsp;</h1>  
    <form #myForm="ngForm" (ngSubmit)="saveData(myForm)">
-       <table>
+       <table class="table">
         <tr>
        <td><label>Name: </label> </td> <td><input type="text" name="firstName" [(ngModel)]="firstName"></td></tr> 
        <tr> <td><label>Email: </label></td> <td> <input type="text" name="emailId" [(ngModel)]="emailId"></td></tr> 
@@ -33,11 +35,12 @@
        <tr> <td><label>City: </label></td> <td><input type="text" name="city" [(ngModel)]="city"></td></tr> 
        <tr> <td><label>County: </label></td> <td><input type="text" name="county" [(ngModel)]="county"></td></tr> 
        <tr> <td><label>State: </label></td> <td><input type="text" name="state" [(ngModel)]="state"></td></tr> 
-       <tr> <td><button type="submit">Submit</button></td></tr>
+       <tr> <td><button type="submit" class="btn btn-success">Submit</button></td></tr>
       </table>
   </form> 
   <br>  
-  <br>
+  <br> 
+  <!--
   <div>
       
       <table>
@@ -100,9 +103,12 @@
       
   </div>  
   <hr>
+  -->
+  <!--
   <div>
      <input type="button" value="Post Data" (click)="postData()"> <br>
      <span>Title: {{title}}</span> <br>
      <span>Body: {{body}}</span>
   </div>
+  -->
 </div>

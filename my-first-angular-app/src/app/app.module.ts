@@ -5,16 +5,24 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './component/todo.component';
+import { HeaderComponent } from './header/header.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer.component';
+import { ViewstudentComponent } from './viewstudent/viewstudent.component';
+
+import {routing} from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent, 
+    HeaderComponent, NavigationComponent, FooterComponent, ViewstudentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
